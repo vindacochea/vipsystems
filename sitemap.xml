@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://vipsystems.site/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://vipsystems.site/index.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://vipsystems.site/service.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://vipsystems.site/contact.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>
