@@ -15,7 +15,7 @@ export const site = {
   },
   social: [
     { label: 'WhatsApp', url: 'https://wa.me/593960510695' },
-    { label: 'Facebook', url: 'TODO' },
+    { label: 'Facebook', url: 'https://www.facebook.com/admin.vipsystem' },
   ],
   clientes: [
     'CELCO',
