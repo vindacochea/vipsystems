@@ -1,0 +1,201 @@
+---
+export type MensajeTipo = 'cliente' | 'bot' | 'evento' | 'aviso';
+
+export interface Mensaje {
+  tipo: MensajeTipo;
+  texto: string;
+}
+
+interface Props {
+  mensajes: Mensaje[];
+  titulo?: string;
+}
+
+const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
+---
+
+<!-- TODO(asset): reemplazar esta conversación de ejemplo por captura real del demo de AgenteVip -->
+<figure class="chat-panel" aria-label="Demo de AgenteVip">
+  <header class="chat-header">
+    <div class="chat-avatar" aria-hidden="true">
+      <img
+        src="/brand/svg/vipsystems-isotipo-fondo-oscuro.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
+    </div>
+    <div class="chat-identity">
+      <p class="chat-name">AgenteVip</p>
+      <p class="chat-status">en línea · 24/7</p>
+    </div>
+  </header>
+
+  <figcaption class="chat-caption">{titulo}</figcaption>
+
+  <ol class="chat-messages" role="list">
+    {mensajes.map((m) => (
+      <li class:list={['msg', `msg--${m.tipo}`]}>
+        {m.tipo === 'cliente' && (
+          <>
+            <span class="sr-only">Cliente:</span>
+            <span class="bubble bubble--cliente">{m.texto}</span>
+          </>
+        )}
+        {m.tipo === 'bot' && (
+          <>
+            <span class="sr-only">AgenteVip:</span>
+            <span class="bubble bubble--bot">{m.texto}</span>
+          </>
+        )}
+        {m.tipo === 'evento' && (
+          <span class="evento">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h10M4 17h6" />
+            </svg>
+            {m.texto}
+          </span>
+        )}
+        {m.tipo === 'aviso' && (
+          <span class="aviso">{m.texto}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</figure>
+
+<style>
+  .chat-panel {
+    width: 100%;
+    max-width: 400px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-block);
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chat-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .chat-name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .chat-status {
+    margin: 0;
+    font-size: 13px;
+    color: var(--green);
+    line-height: 1.3;
+  }
+
+  .chat-caption {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 16px 20px 0;
+  }
+
+  .chat-messages {
+    list-style: none;
+    margin: 0;
+    padding: 12px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .msg {
+    display: flex;
+  }
+
+  .msg--cliente {
+    justify-content: flex-end;
+  }
+
+  .msg--bot {
+    justify-content: flex-start;
+  }
+
+  .msg--evento {
+    justify-content: flex-start;
+  }
+
+  .msg--aviso {
+    justify-content: center;
+  }
+
+  .bubble {
+    max-width: 82%;
+    padding: 10px 14px;
+    word-break: break-word;
+  }
+
+  .bubble--cliente {
+    background: var(--green);
+    color: var(--bg);
+    border-radius: 16px 16px 4px 16px;
+  }
+
+  .bubble--bot {
+    background: var(--line);
+    color: var(--text);
+    border-radius: 16px 16px 16px 4px;
+  }
+
+  .evento {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--green);
+  }
+
+  .aviso {
+    font-size: 12px;
+    color: var(--text-muted);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 4px 12px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
