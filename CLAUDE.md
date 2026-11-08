@@ -4,9 +4,9 @@ Landing de VipSystems (desarrollo de software, CRM e integraciones, Guayaquil, E
 Se reconstruye desde cero en Astro sobre la rama `rediseno`; la plantilla Bootstrap anterior se elimina.
 
 ## Stack y comandos
-- **Astro** (salida estática) · CSS propio con variables · sin frameworks de UI ni Tailwind.
-- Node 20+. `npm install` · `npm run dev` (http://localhost:4321) · `npm run build` (genera `dist/`) · `npm run preview`.
-- Hosting: **Cloudflare Pages**. Build command `npm run build`, output `dist`. No modificar configuración de Cloudflare ni DNS desde el código.
+- **Astro 7** (salida estática) · CSS propio con variables · sin frameworks de UI ni Tailwind.
+- Node 22 LTS (mínimo 22.12, requerido por Astro 7; Node 24 no corre en el macOS del equipo de desarrollo). `.nvmrc` incluido. `npm install` · `npm run dev` (http://localhost:4321) · `npm run build` (genera `dist/`) · `npm run preview`.
+- Hosting: **Cloudflare Pages**. Build command `npm run build`, output `dist`, variable de entorno `NODE_VERSION = 22`. No modificar configuración de Cloudflare ni DNS desde el código.
 - Cero JavaScript en el cliente salvo que sea indispensable (y se justifica en el resumen).
 
 ## Estructura
