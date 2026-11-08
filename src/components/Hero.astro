@@ -1,7 +1,7 @@
 ---
 import Button from './Button.astro';
 import ChatDemo from './ChatDemo.astro';
-import { site } from '../data/site.ts';
+import { site, waLink, mensajesWa } from '../data/site.ts';
 import type { Mensaje } from './ChatDemo.astro';
 
 // TODO(asset): reemplazar esta conversación por captura real del demo de AgenteVip
@@ -25,7 +25,7 @@ const conversacion: Mensaje[] = [
         CRM, facturación electrónica, centrales telefónicas y atención por WhatsApp.
       </p>
       <div class="hero-ctas">
-        <Button href={site.whatsapp.comercial.url} variant="primary" rel="noopener" target="_blank">
+        <Button href={waLink(site.whatsapp.comercial.waId, mensajesWa.general)} variant="primary" rel="noopener" target="_blank">
           Escríbenos por WhatsApp
         </Button>
         <Button href="#agentevip" variant="secondary">
@@ -48,7 +48,8 @@ const conversacion: Mensaje[] = [
   .hero-inner {
     max-width: var(--container);
     margin: 0 auto;
-    padding: var(--section-y) var(--pad-x);
+    padding-block: var(--section-y);
+    padding-inline: var(--pad-x);
     display: flex;
     flex-wrap: wrap;
     gap: 72px;
@@ -94,8 +95,8 @@ const conversacion: Mensaje[] = [
 
   @media (max-width: 600px) {
     .hero-inner {
-      padding: var(--section-y) var(--pad-x-mobile);
-      gap: 48px;
+      padding-inline: var(--pad-x-mobile);
+      gap: 40px;
     }
 
     .hero-subtitulo {
@@ -103,11 +104,15 @@ const conversacion: Mensaje[] = [
     }
   }
 
-  /* En pantallas muy estrechas el título no desborda */
-  @media (max-width: 400px) {
-    .hero-titulo {
-      word-break: break-word;
-      hyphens: auto;
+  @media (max-width: 480px) {
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .hero-ctas :global(.btn) {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
     }
   }
 </style>

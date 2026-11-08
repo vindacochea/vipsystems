@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site.ts';
+import { site, waLink, mensajesWa } from '../data/site.ts';
 ---
 
 <header class="site-header">
@@ -23,7 +23,7 @@ import { site } from '../data/site.ts';
     </nav>
 
     <a
-      href={site.whatsapp.comercial.url}
+      href={waLink(site.whatsapp.comercial.waId, mensajesWa.general)}
       class="btn-whatsapp"
       rel="noopener"
       target="_blank"
@@ -88,7 +88,7 @@ import { site } from '../data/site.ts';
           <li><a href="#contacto">Contacto</a></li>
           <li>
             <a
-              href={site.whatsapp.comercial.url}
+              href={waLink(site.whatsapp.comercial.waId, mensajesWa.general)}
               rel="noopener"
               target="_blank"
               class="mobile-wa"
@@ -264,6 +264,12 @@ import { site } from '../data/site.ts';
     .nav-mobile {
       display: block;
       margin-left: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-link img {
+      height: 28px;
     }
   }
 </style>
