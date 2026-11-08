@@ -1,0 +1,129 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import { site, waLink, mensajesWa } from '../data/site.ts';
+---
+
+<Section id="contacto" bg="bg" borderTop={true}>
+  <div class="contacto">
+    <h2 class="contacto-titulo">Conversemos</h2>
+    <p class="contacto-subtitulo">
+      Cuéntanos qué necesitas y te respondemos el mismo día.
+    </p>
+    <Button
+      href={waLink(site.whatsapp.comercial.waId, mensajesWa.general)}
+      variant="primary"
+      rel="noopener"
+      target="_blank"
+      class="contacto-cta"
+    >
+      Escríbenos por WhatsApp
+    </Button>
+
+    <ul class="contacto-datos">
+      <li>
+        <span class="dato-etiqueta">Ciudad</span>
+        <span class="dato-valor">{site.city}</span>
+      </li>
+      <li>
+        <span class="dato-etiqueta">Comercial</span>
+        <a
+          href={waLink(site.whatsapp.comercial.waId, mensajesWa.general)}
+          class="dato-valor dato-link"
+          rel="noopener"
+          target="_blank"
+        >
+          {site.whatsapp.comercial.number}
+        </a>
+      </li>
+      <li>
+        <span class="dato-etiqueta">Demo AgenteVip</span>
+        <a
+          href={waLink(site.whatsapp.agentevip.waId, mensajesWa.pruebaAgenteVip)}
+          class="dato-valor dato-link"
+          rel="noopener"
+          target="_blank"
+        >
+          {site.whatsapp.agentevip.number}
+        </a>
+      </li>
+      <li>
+        <span class="dato-etiqueta">Correo</span>
+        <a href={`mailto:${site.email}`} class="dato-valor dato-link">
+          {site.email}
+        </a>
+      </li>
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: clamp(16px, 2vw, 24px);
+  }
+
+  .contacto-titulo {
+    margin: 0;
+    font-size: clamp(40px, 7vw, 72px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .contacto-subtitulo {
+    margin: 20px 0 36px;
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 480px;
+  }
+
+  .contacto-cta {
+    font-size: 18px;
+    padding: 18px 32px;
+  }
+
+  .contacto-datos {
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 40px;
+    font-size: 16px;
+  }
+
+  .contacto-datos li {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+  }
+
+  .dato-etiqueta {
+    color: var(--text-muted);
+  }
+
+  .dato-valor {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .dato-link {
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .dato-link:hover {
+    color: var(--green);
+  }
+
+  @media (max-width: 480px) {
+    .contacto-datos {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
