@@ -1,6 +1,6 @@
 ---
 import Button from './Button.astro';
-import { site, waLink, mensajesWa } from '../data/site.ts';
+import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
 ---
 
 <article id="agentevip" class="agentevip">
@@ -22,7 +22,11 @@ import { site, waLink, mensajesWa } from '../data/site.ts';
         rel="noopener"
         target="_blank"
       >
-        Pruébalo ahora · {site.whatsapp.agentevip.number}
+        <span class="btn-prueba-wrap">
+          <span class="btn-prueba-label">Pruébalo ahora</span>
+          <span class="btn-prueba-sep" aria-hidden="true"> · </span>
+          <span class="btn-prueba-tel">{telVisible(site.whatsapp.agentevip.number)}</span>
+        </span>
       </Button>
       <Button
         href={waLink(site.whatsapp.comercial.waId, mensajesWa.empresaAgenteVip)}
@@ -123,6 +127,16 @@ import { site, waLink, mensajesWa } from '../data/site.ts';
     color: var(--bg);
   }
 
+  .btn-prueba-wrap {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .btn-prueba-tel {
+    white-space: nowrap;
+  }
+
   @media (max-width: 480px) {
     .agentevip-ctas {
       flex-direction: column;
@@ -132,6 +146,16 @@ import { site, waLink, mensajesWa } from '../data/site.ts';
       width: 100%;
       white-space: normal;
       text-align: center;
+    }
+
+    .btn-prueba-wrap {
+      flex-direction: column;
+      gap: 2px;
+      white-space: normal;
+    }
+
+    .btn-prueba-sep {
+      display: none;
     }
   }
 </style>

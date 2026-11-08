@@ -1,7 +1,7 @@
 ---
 import Section from './Section.astro';
 import Button from './Button.astro';
-import { site, waLink, mensajesWa } from '../data/site.ts';
+import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
 ---
 
 <Section id="contacto" bg="bg" borderTop={true}>
@@ -33,7 +33,7 @@ import { site, waLink, mensajesWa } from '../data/site.ts';
           rel="noopener"
           target="_blank"
         >
-          {site.whatsapp.comercial.number}
+          {telVisible(site.whatsapp.comercial.number)}
         </a>
       </li>
       <li>
@@ -44,7 +44,7 @@ import { site, waLink, mensajesWa } from '../data/site.ts';
           rel="noopener"
           target="_blank"
         >
-          {site.whatsapp.agentevip.number}
+          {telVisible(site.whatsapp.agentevip.number)}
         </a>
       </li>
       <li>
