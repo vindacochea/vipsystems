@@ -1,0 +1,137 @@
+---
+import Section from './Section.astro';
+import { site, waLink, mensajesWa } from '../data/site.ts';
+
+interface Servicio {
+  titulo: string;
+  texto: string;
+  byline?: string;
+  cta?: { texto: string; href: string };
+  icono: 'codigo' | 'integraciones' | 'facturacion';
+}
+
+const servicios: Servicio[] = [
+  {
+    icono: 'codigo',
+    titulo: 'Desarrollo a medida',
+    texto: 'Aplicaciones web y móviles construidas para tu proceso, no al revés. Levantamos requisitos, desarrollamos, ponemos en producción y damos soporte. Java, Angular, React y PHP en web; React Native y NativeScript en móvil; bases de datos SQL.',
+  },
+  {
+    icono: 'integraciones',
+    titulo: 'CRM e integraciones',
+    texto: 'Implementamos, personalizamos y mantenemos SugarCRM, SuiteCRM y Kommo. Conectamos tu CRM con la central telefónica, formularios web, redes sociales y otros sistemas, para que la información llegue sola y no se digite dos veces.',
+  },
+  {
+    icono: 'facturacion',
+    titulo: 'Facturación y firma electrónica',
+    byline: 'by Ebos',
+    texto: 'Facturación electrónica by Ebos para emitir comprobantes válidos ante el SRI, y firma electrónica disponible para empezar desde el primer día. Te acompañamos en la configuración inicial.',
+    cta: { texto: 'Cotiza tu plan →', href: waLink(site.whatsapp.comercial.waId, mensajesWa.facturacion) },
+  },
+];
+---
+
+<Section id="servicios" bg="surface" borderTop={true}>
+  <h2 class="servicios-titulo">Lo que hacemos</h2>
+  <div class="servicios-grid">
+    {servicios.map((s) => (
+      <article class="servicio-card">
+        <div class="servicio-icono" aria-hidden="true">
+          {s.icono === 'codigo' && (
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7l-5 5 5 5M16 7l5 5-5 5" />
+            </svg>
+          )}
+          {s.icono === 'integraciones' && (
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="6" r="3" />
+              <circle cx="18" cy="18" r="3" />
+              <path d="M8.6 10.6l6.8-3.2M8.6 13.4l6.8 3.2" />
+            </svg>
+          )}
+          {s.icono === 'facturacion' && (
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+              <path d="M9 8h6M9 12h6" />
+            </svg>
+          )}
+        </div>
+        <h3 class="servicio-nombre">{s.titulo}</h3>
+        {s.byline && <p class="servicio-byline">{s.byline}</p>}
+        <p class="servicio-texto">{s.texto}</p>
+        {s.cta && (
+          <a
+            href={s.cta.href}
+            class="servicio-cta"
+            rel="noopener"
+            target="_blank"
+          >
+            {s.cta.texto}
+          </a>
+        )}
+      </article>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .servicios-titulo {
+    margin: 0 0 48px;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 24px;
+  }
+
+  .servicio-card {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .servicio-icono {
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .servicio-nombre {
+    margin: 0;
+    font-size: clamp(20px, 2vw, 25px);
+  }
+
+  .servicio-byline {
+    margin: -8px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .servicio-texto {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .servicio-cta {
+    margin-top: auto;
+    font-weight: 600;
+    color: var(--green);
+    text-decoration: none;
+  }
+
+  .servicio-cta:hover {
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    .servicio-card {
+      padding: 24px;
+    }
+  }
+</style>

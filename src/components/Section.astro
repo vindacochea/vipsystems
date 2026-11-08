@@ -1,0 +1,55 @@
+---
+interface Props {
+  id?: string;
+  bg?: 'bg' | 'surface';
+  borderTop?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  bg = 'bg',
+  borderTop = true,
+  class: className,
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={['section', `section--${bg}`, { 'section--border-top': borderTop }, className]}
+>
+  <div class="section-inner">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    width: 100%;
+  }
+
+  .section--bg {
+    background: var(--bg);
+  }
+
+  .section--surface {
+    background: var(--surface);
+  }
+
+  .section--border-top {
+    border-top: 1px solid var(--line);
+  }
+
+  .section-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-block: var(--section-y);
+    padding-inline: var(--pad-x);
+  }
+
+  @media (max-width: 600px) {
+    .section-inner {
+      padding-inline: var(--pad-x-mobile);
+    }
+  }
+</style>

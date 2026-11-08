@@ -1,0 +1,106 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'dark' | 'light' | 'outline-dark';
+  href: string;
+  rel?: string;
+  target?: string;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  href,
+  rel,
+  target,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  rel={rel}
+  target={target}
+  class:list={['btn', `btn--${variant}`, className]}
+>
+  <slot />
+</a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 14px 24px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    transition: opacity 0.15s, background 0.15s, color 0.15s;
+    cursor: pointer;
+    overflow-wrap: break-word;
+  }
+
+  /* Primary: green background, dark text — NUNCA blanco sobre verde */
+  .btn--primary {
+    background: var(--green);
+    color: var(--bg);
+    border: none;
+  }
+
+  .btn--primary:hover {
+    color: var(--bg);
+    opacity: 0.88;
+  }
+
+  /* Secondary: subtle border, white text */
+  .btn--secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--line-soft);
+  }
+
+  .btn--secondary:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Dark: dark background, white text — para usar sobre fondos claros o verdes */
+  .btn--dark {
+    background: var(--bg);
+    color: var(--text);
+    border: none;
+  }
+
+  .btn--dark:hover {
+    color: var(--text);
+    opacity: 0.88;
+  }
+
+  /* Light: white background, dark text */
+  .btn--light {
+    background: #ffffff;
+    color: var(--bg);
+    border: none;
+  }
+
+  .btn--light:hover {
+    color: var(--bg);
+    opacity: 0.88;
+  }
+
+  /* Outline-dark: borde y texto oscuros — para usar sobre fondo verde */
+  .btn--outline-dark {
+    background: transparent;
+    color: var(--bg);
+    border: 1.5px solid var(--bg);
+  }
+
+  .btn--outline-dark:hover {
+    color: var(--bg);
+    background: rgba(31, 35, 49, 0.08);
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Página no encontrada — VipSystems" noindex={true}>
+  <main class="not-found">
+    <div class="not-found-inner">
+      <p class="not-found-code">404</p>
+      <h1>Página no encontrada</h1>
+      <p class="not-found-text">
+        La página que buscas no existe o fue movida.
+      </p>
+      <a href="/" class="btn-home">Volver al inicio</a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .not-found {
+    min-height: calc(100dvh - var(--header-h));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pad-x);
+  }
+
+  .not-found-inner {
+    text-align: center;
+    max-width: 480px;
+  }
+
+  .not-found-code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(80px, 15vw, 140px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--green);
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    margin: 0 0 16px;
+  }
+
+  .not-found-text {
+    color: var(--text-muted);
+    margin: 0 0 36px;
+  }
+
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    background: var(--green);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 14px 28px;
+    min-height: 44px;
+    border-radius: var(--radius-pill);
+  }
+
+  .btn-home:hover {
+    color: var(--bg);
+    opacity: 0.88;
+  }
+</style>

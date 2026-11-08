@@ -1,0 +1,290 @@
+---
+import Section from './Section.astro';
+import { site } from '../data/site.ts';
+
+interface Props {
+  logoCelco?: string;
+}
+
+const { logoCelco } = Astro.props;
+
+const pasos = [
+  {
+    num: '1',
+    negrita: 'Entendemos tu proceso',
+    resto: ' antes de proponer tecnología.',
+  },
+  {
+    num: '2',
+    negrita: 'Propuesta clara:',
+    resto: ' alcance, tiempos y costo por escrito.',
+  },
+  {
+    num: '3',
+    negrita: 'Entregas por etapas',
+    resto: ' que puedes probar.',
+  },
+  {
+    num: '4',
+    negrita: 'Soporte después de producción',
+    resto: ', no solo hasta la entrega.',
+  },
+];
+---
+
+<Section id="experiencia" bg="surface" borderTop={true}>
+  <h2 class="exp-titulo">Sistemas que siguen funcionando años después</h2>
+
+  <div class="exp-grid">
+    <!-- Caso CELCO — toda la fila -->
+    <div class="exp-celco">
+      <div class="celco-logo-col">
+        {logoCelco ? (
+          <img src={logoCelco} alt="CELCO" width="240" height="76" loading="lazy" decoding="async" class="celco-img" />
+        ) : (
+          <span class="celco-nombre-texto">CELCO</span>
+        )}
+      </div>
+      <div class="celco-texto">
+        <p class="celco-etiqueta">Caso destacado · más de 5 años</p>
+        <h3 class={logoCelco ? 'celco-h3 sr-only' : 'celco-h3'}>CELCO</h3>
+        <p class="celco-desc">
+          Desde hace más de 5 años damos soporte y desarrollamos nuevos módulos para el
+          CRM de CELCO, empresa de venta de UPS con clientes en todo el país. Su SugarCRM
+          trabaja integrado con la central telefónica de la empresa.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tarjetas secundarias: fila propia de 2 columnas iguales -->
+    <div class="exp-cards-row">
+      <article class="exp-card">
+        <h3>Implementaciones de CRM con GreenfieldCRM</h3>
+        <p>
+          Por más de 5 años hemos trabajado con la consultora GreenfieldCRM en implementaciones
+          de CRM para instituciones y empresas como la Universidad Andina Simón Bolívar (UASB),
+          Sigue-e, Busimot y Steiner, entre otras.
+        </p>
+      </article>
+
+      <article class="exp-card">
+        <h3>Desarrollo a medida</h3>
+        <p>
+          Hemos desarrollado proyectos para el Ministerio de Energía y Minas, el Consejo de
+          Educación Superior (CES), la Secretaría Técnica de Gestión Inmobiliaria del Sector
+          Público (Inmobiliar) y Ebos Platforms.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Han trabajado con nosotros -->
+  <p class="clientes-titulo">Han trabajado con nosotros</p>
+  <ul class="clientes-lista">
+    {site.clientes.map((c) => (
+      <li class="cliente-pill">{c}</li>
+    ))}
+  </ul>
+
+  <!-- Cómo trabajamos -->
+  <h3 class="como-titulo">Cómo trabajamos</h3>
+  <ol class="como-grid">
+    {pasos.map((p) => (
+      <li class="como-paso">
+        <span class="como-num" aria-hidden="true">{p.num}</span>
+        <p class="como-texto">
+          <strong>{p.negrita}</strong>{p.resto}
+        </p>
+      </li>
+    ))}
+  </ol>
+</Section>
+
+<style>
+  .exp-titulo {
+    margin: 0 0 48px;
+    max-width: 780px;
+  }
+
+  /* Grid principal — CELCO ocupa toda la fila; tarjetas secundarias tienen su propio contenedor */
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Fila de 2 tarjetas iguales */
+  .exp-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 24px;
+  }
+
+  /* CELCO — ocupa toda la fila */
+  .exp-celco {
+    grid-column: 1 / -1;
+    background: #ffffff;
+    color: var(--bg);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    align-items: center;
+  }
+
+  .celco-logo-col {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .celco-img {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Nombre textual mientras no haya logo */
+  .celco-nombre-texto {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.02em;
+  }
+
+  .celco-texto {
+    flex: 1 1 min(100%, 420px);
+    min-width: 0;
+  }
+
+  .celco-etiqueta {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-ink);
+  }
+
+  .celco-h3 {
+    margin: 0 0 10px;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--bg);
+  }
+
+  .celco-desc {
+    margin: 0;
+    font-size: 18px;
+    color: var(--bg);
+    line-height: 1.6;
+  }
+
+  /* Tarjetas secundarias */
+  .exp-card {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .exp-card h3 {
+    margin: 0;
+    font-size: clamp(18px, 2vw, 23px);
+  }
+
+  .exp-card p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  /* Clientes */
+  .clientes-titulo {
+    margin: 56px 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .clientes-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cliente-pill {
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+
+  /* Cómo trabajamos */
+  .como-titulo {
+    margin: 72px 0 28px;
+    font-size: clamp(24px, 2.8vw, 30px);
+  }
+
+  .como-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 32px;
+  }
+
+  .como-paso {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .como-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .como-texto {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .como-texto strong {
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    .exp-celco {
+      padding: 24px;
+    }
+
+    .exp-card {
+      padding: 24px;
+    }
+  }
+
+</style>

@@ -1,0 +1,45 @@
+---
+import { site } from '../data/site.ts';
+---
+
+<div class="tecnologias" role="region" aria-label="Tecnologías">
+  <div class="tec-inner">
+    <ul class="tec-lista">
+      {site.tecnologias.map((t) => (
+        <li>{t}</li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .tecnologias {
+    border-top: 1px solid var(--line);
+  }
+
+  .tec-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 32px var(--pad-x);
+  }
+
+  .tec-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 36px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 600px) {
+    .tec-inner {
+      padding-inline: var(--pad-x-mobile);
+    }
+  }
+</style>
