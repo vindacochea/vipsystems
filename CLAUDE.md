@@ -76,7 +76,10 @@ Teléfonos, URLs de `wa.me` y correo **solo** en `src/data/site.ts`; los compone
 - Enlaces externos de WhatsApp con `rel="noopener"`.
 
 ## Forma de trabajo
-- Trabajar solo en la rama `rediseno`. **Nunca** hacer push ni merge a `main` sin que Víctor lo pida.
+- `main` es producción: cada push a `main` despliega vipsystems.site (Workers Builds → `wrangler deploy`).
+- Todo cambio nuevo va en una rama `feature/<descripcion-corta>` o `fix/<descripcion-corta>` creada desde `main`; cada rama genera su vista previa en `<rama>-vipsystems.vindacochea.workers.dev`.
+- Se integra a `main` solo mediante pull request y cuando Víctor lo aprueba. Nunca push directo a `main`.
+- Antes de abrir el PR: `npm run build` limpio y las dos consultas de desborde verificadas por Víctor en la vista previa.
 - Commits pequeños y descriptivos en español (`feat: hero y chat de AgenteVip`).
 - Antes de terminar cada tarea: `npm run build` sin errores ni warnings nuevos.
 - No agregar dependencias fuera de `astro` y `@fontsource/*` sin preguntar.
