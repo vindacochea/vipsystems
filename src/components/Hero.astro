@@ -1,0 +1,113 @@
+---
+import Button from './Button.astro';
+import ChatDemo from './ChatDemo.astro';
+import { site } from '../data/site.ts';
+import type { Mensaje } from './ChatDemo.astro';
+
+// TODO(asset): reemplazar esta conversación por captura real del demo de AgenteVip
+const conversacion: Mensaje[] = [
+  { tipo: 'cliente', texto: 'Hola, ¿en qué estado está mi caso de soporte?' },
+  { tipo: 'bot',     texto: 'Lo encontré en el CRM. Tu caso está asignado a un técnico y se atiende hoy en la tarde.' },
+  { tipo: 'evento',  texto: 'Consulta en CRM' },
+  { tipo: 'cliente', texto: '¿Puedo hablar con alguien?' },
+  { tipo: 'bot',     texto: 'Claro, te paso con una persona de nuestro equipo.' },
+  { tipo: 'aviso',   texto: 'Conversación transferida a un agente' },
+];
+---
+
+<section id="inicio" class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-antetitulo">Desarrollo y tecnología · Guayaquil, Ecuador</p>
+      <h1 class="hero-titulo">Tu CRM, tu facturación y tu atención al cliente, conectados.</h1>
+      <p class="hero-subtitulo">
+        Desarrollamos e integramos los sistemas que tu empresa usa todos los días:
+        CRM, facturación electrónica, centrales telefónicas y atención por WhatsApp.
+      </p>
+      <div class="hero-ctas">
+        <Button href={site.whatsapp.comercial.url} variant="primary" rel="noopener" target="_blank">
+          Escríbenos por WhatsApp
+        </Button>
+        <Button href="#agentevip" variant="secondary">
+          Prueba AgenteVip
+        </Button>
+      </div>
+    </div>
+
+    <div class="hero-chat">
+      <ChatDemo mensajes={conversacion} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--section-y) var(--pad-x);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .hero-text {
+    flex: 1 1 540px;
+    min-width: 0;
+  }
+
+  .hero-antetitulo {
+    margin: 0 0 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .hero-titulo {
+    margin: 0;
+  }
+
+  .hero-subtitulo {
+    margin: 28px 0 0;
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 560px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+  }
+
+  .hero-chat {
+    flex: 1 1 380px;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+    .hero-inner {
+      padding: var(--section-y) var(--pad-x-mobile);
+      gap: 48px;
+    }
+
+    .hero-subtitulo {
+      font-size: 18px;
+    }
+  }
+
+  /* En pantallas muy estrechas el título no desborda */
+  @media (max-width: 400px) {
+    .hero-titulo {
+      word-break: break-word;
+      hyphens: auto;
+    }
+  }
+</style>
