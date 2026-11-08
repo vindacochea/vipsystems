@@ -72,3 +72,14 @@ img, svg {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* Compensa el header sticky al navegar con anclas */
+#inicio,
+#servicios,
+#productos,
+#agentevip,
+#alkilavip,
+#experiencia,
+#contacto {
+  scroll-margin-top: var(--scroll-offset);
+}
