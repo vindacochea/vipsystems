@@ -42,15 +42,16 @@ const tiles = [
       Controla tu inventario, las reservas por fecha, las entregas y retiros, y los cobros
       desde un solo sistema.
     </p>
-    <Button
-      href={waLink(site.whatsapp.comercial.waId, mensajesWa.demoAlkilaVip)}
-      variant="light"
-      rel="noopener"
-      target="_blank"
-      class="alkilavip-cta"
-    >
-      Solicita una demostración
-    </Button>
+    <div class="alkilavip-cta-wrap">
+      <Button
+        href={waLink(site.whatsapp.comercial.waId, mensajesWa.demoAlkilaVip)}
+        variant="light"
+        rel="noopener"
+        target="_blank"
+      >
+        Solicita una demostración
+      </Button>
+    </div>
   </div>
 
   <div class="alkilavip-visual">
@@ -98,7 +99,7 @@ const tiles = [
   }
 
   .alkilavip-text {
-    flex: 1 1 440px;
+    flex: 1 1 min(100%, 440px);
     min-width: 0;
   }
 
@@ -137,13 +138,20 @@ const tiles = [
     color: var(--text-muted);
   }
 
-  .alkilavip-cta {
+  .alkilavip-cta-wrap {
     margin-top: 32px;
+  }
+
+  @media (max-width: 480px) {
+    .alkilavip-cta-wrap :global(.btn) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   /* Visual column */
   .alkilavip-visual {
-    flex: 1 1 380px;
+    flex: 1 1 min(100%, 380px);
     min-width: 0;
   }
 
@@ -182,12 +190,4 @@ const tiles = [
     line-height: 1.3;
   }
 
-  @media (max-width: 480px) {
-    .alkilavip-cta :global(.btn),
-    :global(.alkilavip-cta.btn) {
-      width: 100%;
-      white-space: normal;
-      text-align: center;
-    }
-  }
 </style>
