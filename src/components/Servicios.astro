@@ -1,6 +1,6 @@
 ---
 import Section from './Section.astro';
-import { site } from '../data/site.ts';
+import { site, waLink, mensajesWa } from '../data/site.ts';
 
 interface Servicio {
   titulo: string;
@@ -26,7 +26,7 @@ const servicios: Servicio[] = [
     titulo: 'Facturación y firma electrónica',
     byline: 'by Ebos',
     texto: 'Facturación electrónica by Ebos para emitir comprobantes válidos ante el SRI, y firma electrónica disponible para empezar desde el primer día. Te acompañamos en la configuración inicial.',
-    cta: { texto: 'Cotiza tu plan →', href: site.whatsapp.comercial.url },
+    cta: { texto: 'Cotiza tu plan →', href: waLink(site.whatsapp.comercial.waId, mensajesWa.facturacion) },
   },
 ];
 ---

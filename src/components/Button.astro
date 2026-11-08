@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'dark' | 'light';
+  variant?: 'primary' | 'secondary' | 'dark' | 'light' | 'outline-dark';
   href: string;
   rel?: string;
   target?: string;
@@ -90,5 +90,17 @@ const {
   .btn--light:hover {
     color: var(--bg);
     opacity: 0.88;
+  }
+
+  /* Outline-dark: borde y texto oscuros — para usar sobre fondo verde */
+  .btn--outline-dark {
+    background: transparent;
+    color: var(--bg);
+    border: 1.5px solid var(--bg);
+  }
+
+  .btn--outline-dark:hover {
+    color: var(--bg);
+    background: rgba(31, 35, 49, 0.08);
   }
 </style>
