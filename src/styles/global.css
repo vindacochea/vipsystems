@@ -35,10 +35,13 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1.1;
+  hyphens: manual;
+  overflow-wrap: normal;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(40px, 5.5vw, 66px);
+  font-size: clamp(34px, 5.5vw, 66px);
   font-weight: 700;
   letter-spacing: -0.03em;
 }
@@ -52,6 +55,11 @@ h2 {
 h3 {
   font-size: clamp(20px, 2.5vw, 25px);
   font-weight: 700;
+}
+
+p {
+  hyphens: manual;
+  text-wrap: pretty;
 }
 
 a {
