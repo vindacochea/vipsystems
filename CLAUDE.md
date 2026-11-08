@@ -6,8 +6,9 @@ Se reconstruye desde cero en Astro sobre la rama `rediseno`; la plantilla Bootst
 ## Stack y comandos
 - **Astro 7** (salida estática) · CSS propio con variables · sin frameworks de UI ni Tailwind.
 - Node 22 LTS (mínimo 22.12, requerido por Astro 7; Node 24 no corre en el macOS del equipo de desarrollo). `.nvmrc` incluido. `npm install` · `npm run dev` (http://localhost:4321) · `npm run build` (genera `dist/`) · `npm run preview`.
-- Hosting: **Cloudflare Pages**. Build command `npm run build`, output `dist`, variable de entorno `NODE_VERSION = 22`. No modificar configuración de Cloudflare ni DNS desde el código.
+- Hosting: **Cloudflare Workers** (static assets) con Workers Builds. Producción: push a `main` → `wrangler deploy`. Otras ramas → `wrangler versions upload`, vista previa en `<rama>-<worker>.<subdominio>.workers.dev`. Configuración en `wrangler.jsonc`. Variable de build `NODE_VERSION = 22`. No modificar configuración de Cloudflare ni DNS desde el código.
 - Cero JavaScript en el cliente salvo que sea indispensable (y se justifica en el resumen).
+- Equipo de desarrollo en macOS Big Sur: algunas herramientas con binarios nativos (wrangler, ciertas versiones de esbuild) no corren localmente pero sí en el build de Cloudflare (Linux). Antes de subir de versión `astro` o agregar dependencias con binarios nativos, comprobar que `npm run build` funcione localmente. `package-lock.json` se versiona y se instala con `npm ci`.
 
 ## Estructura
 ```
