@@ -94,4 +94,4 @@ Java · Angular · PHP · MySQL / MariaDB · PostgreSQL · SugarCRM · SuiteCRM 
 
 ## 8. Footer
 VipSystems — Desarrollo de software, CRM e integraciones. Guayaquil, Ecuador.
-Iconos: WhatsApp · Facebook (únicas redes por ahora; dejar el componente listo para agregar más). URL de Facebook: `TODO` (pendiente).
+Iconos: WhatsApp · Facebook (únicas redes por ahora; dejar el componente listo para agregar más). URL de Facebook: `https://www.facebook.com/admin.vipsystem`.
