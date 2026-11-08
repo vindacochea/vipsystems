@@ -31,7 +31,7 @@ Servicios · Productos · Experiencia · Contacto · [botón] WhatsApp
 **Título de sección:** Lo que hacemos
 
 ### Desarrollo a medida
-Aplicaciones web construidas para tu proceso, no al revés. Levantamos requisitos, desarrollamos, ponemos en producción y damos soporte. Java, Angular, PHP y bases de datos SQL.
+Aplicaciones web y móviles construidas para tu proceso, no al revés. Levantamos requisitos, desarrollamos, ponemos en producción y damos soporte. Java, Angular, React y PHP en web; React Native y NativeScript en móvil; bases de datos SQL.
 
 ### CRM e integraciones
 Implementamos, personalizamos y mantenemos SugarCRM, SuiteCRM y Kommo. Conectamos tu CRM con la central telefónica, formularios web, redes sociales y otros sistemas, para que la información llegue sola y no se digite dos veces.
@@ -82,7 +82,7 @@ CELCO · GreenfieldCRM · UASB · Sigue-e · Busimot · Steiner · Ministerio de
 4. **Soporte después de producción**, no solo hasta la entrega.
 
 ## 6. Tecnologías (franja compacta)
-Java · Angular · PHP · MySQL / MariaDB · PostgreSQL · SugarCRM · SuiteCRM · Kommo
+Java · Angular · React · React Native · NativeScript · PHP · MySQL / MariaDB · PostgreSQL · SugarCRM · SuiteCRM · Kommo
 
 ## 7. Contacto  (`#contacto`)
 - **Título:** Conversemos
