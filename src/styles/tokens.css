@@ -1,0 +1,21 @@
+:root {
+  --bg: #1f2331;
+  --surface: #272c3d;
+  --line: #343a4f;
+  --line-strong: #3a4057;
+  --line-soft: #5a6178;
+  --text: #ffffff;
+  --text-muted: #b4b9c8;
+  --green: #25ae88;
+  --green-ink: #1a7d62;
+  --blue: #313559;
+
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --radius-block: 24px;
+
+  --container: 1240px;
+  --pad-x: 32px;
+  --pad-x-mobile: 20px;
+  --section-y: 96px;
+}
