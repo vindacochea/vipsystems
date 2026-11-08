@@ -1,0 +1,25 @@
+---
+import Section from './Section.astro';
+import AgenteVip from './AgenteVip.astro';
+import AlkilaVip from './AlkilaVip.astro';
+---
+
+<Section id="productos" bg="bg" borderTop={true}>
+  <h2 class="productos-titulo">Productos</h2>
+  <div class="productos-lista">
+    <AgenteVip />
+    <AlkilaVip />
+  </div>
+</Section>
+
+<style>
+  .productos-titulo {
+    margin: 0 0 32px;
+  }
+
+  .productos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+</style>
