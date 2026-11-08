@@ -3,6 +3,10 @@ export function waLink(numero: string, mensaje?: string): string {
   return `https://wa.me/${numero}`;
 }
 
+export function telVisible(numero: string): string {
+  return numero.replace(/ /g, '\u00A0');
+}
+
 export const mensajesWa = {
   general:          'Hola, vengo de vipsystems.site y quiero información.',
   facturacion:      'Hola, quiero cotizar facturación electrónica.',
@@ -48,6 +52,9 @@ export const site = {
   tecnologias: [
     'Java',
     'Angular',
+    'React',
+    'React Native',
+    'NativeScript',
     'PHP',
     'MySQL / MariaDB',
     'PostgreSQL',
