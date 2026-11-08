@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site.ts';
+import spaceGrotesk700Url from '@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2?url';
 
 interface Props {
   title?: string;
@@ -66,14 +67,8 @@ const jsonLd = {
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Precarga de la fuente del h1 (Space Grotesk 700 latin). Hash estable hasta próximo upgrade de @fontsource/space-grotesk. -->
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/_astro/space-grotesk-latin-700-normal.RjhwGPKo.woff2"
-      crossorigin
-    />
+    <!-- Precarga de la fuente del h1; la URL la resuelve Vite con el hash correcto en cada build. -->
+    <link rel="preload" as="font" type="font/woff2" href={spaceGrotesk700Url} crossorigin />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
