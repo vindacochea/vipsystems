@@ -3,7 +3,6 @@ import Section from './Section.astro';
 import { site } from '../data/site.ts';
 
 interface Props {
-  // TODO(asset): logo de CELCO — cuando esté disponible pasar como logoCelco="/img/celco.svg"
   logoCelco?: string;
 }
 
@@ -41,14 +40,14 @@ const pasos = [
     <div class="exp-celco">
       <div class="celco-logo-col">
         {logoCelco ? (
-          <img src={logoCelco} alt="Logo CELCO" class="celco-img" />
+          <img src={logoCelco} alt="CELCO" width="240" height="76" loading="lazy" decoding="async" class="celco-img" />
         ) : (
           <span class="celco-nombre-texto">CELCO</span>
         )}
       </div>
       <div class="celco-texto">
         <p class="celco-etiqueta">Caso destacado · más de 5 años</p>
-        <h3 class="celco-h3">CELCO</h3>
+        <h3 class={logoCelco ? 'celco-h3 sr-only' : 'celco-h3'}>CELCO</h3>
         <p class="celco-desc">
           Desde hace más de 5 años damos soporte y desarrollamos nuevos módulos para el
           CRM de CELCO, empresa de venta de UPS con clientes en todo el país. Su SugarCRM
@@ -57,25 +56,26 @@ const pasos = [
       </div>
     </div>
 
-    <!-- Tarjeta GreenfieldCRM -->
-    <article class="exp-card">
-      <h3>Implementaciones de CRM con GreenfieldCRM</h3>
-      <p>
-        Por más de 5 años hemos trabajado con la consultora GreenfieldCRM en implementaciones
-        de CRM para instituciones y empresas como la Universidad Andina Simón Bolívar (UASB),
-        Sigue-e, Busimot y Steiner, entre otras.
-      </p>
-    </article>
+    <!-- Tarjetas secundarias: fila propia de 2 columnas iguales -->
+    <div class="exp-cards-row">
+      <article class="exp-card">
+        <h3>Implementaciones de CRM con GreenfieldCRM</h3>
+        <p>
+          Por más de 5 años hemos trabajado con la consultora GreenfieldCRM en implementaciones
+          de CRM para instituciones y empresas como la Universidad Andina Simón Bolívar (UASB),
+          Sigue-e, Busimot y Steiner, entre otras.
+        </p>
+      </article>
 
-    <!-- Tarjeta Desarrollo a medida -->
-    <article class="exp-card">
-      <h3>Desarrollo a medida</h3>
-      <p>
-        Hemos desarrollado proyectos para el Ministerio de Energía y Minas, el Consejo de
-        Educación Superior (CES), la Secretaría Técnica de Gestión Inmobiliaria del Sector
-        Público (Inmobiliar) y Ebos Platforms.
-      </p>
-    </article>
+      <article class="exp-card">
+        <h3>Desarrollo a medida</h3>
+        <p>
+          Hemos desarrollado proyectos para el Ministerio de Energía y Minas, el Consejo de
+          Educación Superior (CES), la Secretaría Técnica de Gestión Inmobiliaria del Sector
+          Público (Inmobiliar) y Ebos Platforms.
+        </p>
+      </article>
+    </div>
   </div>
 
   <!-- Han trabajado con nosotros -->
@@ -106,10 +106,17 @@ const pasos = [
     max-width: 780px;
   }
 
-  /* Grid principal */
+  /* Grid principal — CELCO ocupa toda la fila; tarjetas secundarias tienen su propio contenedor */
   .exp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Fila de 2 tarjetas iguales */
+  .exp-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
     gap: 24px;
   }
 
@@ -128,17 +135,28 @@ const pasos = [
 
   .celco-logo-col {
     flex: 0 0 auto;
-    width: 200px;
-    min-height: 110px;
+    width: 240px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .celco-img {
-    max-width: 200px;
-    max-height: 110px;
+    width: 240px;
+    height: auto;
     object-fit: contain;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* Nombre textual mientras no haya logo */
@@ -258,5 +276,22 @@ const pasos = [
 
   .como-texto strong {
     color: var(--text);
+  }
+
+  @media (max-width: 600px) {
+    .exp-celco {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .celco-logo-col {
+      width: 100%;
+    }
+
+    .celco-img {
+      width: 100%;
+      max-width: 200px;
+    }
   }
 </style>
