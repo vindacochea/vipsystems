@@ -8,7 +8,7 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
     <p class="agentevip-badge">
       <span class="badge">Demo disponible</span>
     </p>
-    <h3 class="agentevip-titulo">AgenteVip</h3>
+    <h3 class="agentevip-titulo">AgenteVip <span class="agentevip-titulo-desc">atención al cliente por WhatsApp</span></h3>
     <p class="agentevip-lema">Tu call center en WhatsApp, conectado a tus sistemas.</p>
     <p class="agentevip-desc">
       AgenteVip atiende a tus clientes por WhatsApp a cualquier hora: responde consultas,
@@ -84,6 +84,15 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
     letter-spacing: -0.03em;
     line-height: 1.05;
     color: var(--bg);
+  }
+
+  .agentevip-titulo-desc {
+    display: block;
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--bg);
+    margin-top: 4px;
   }
 
   .agentevip-lema {

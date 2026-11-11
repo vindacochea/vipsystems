@@ -9,16 +9,23 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  canonical?: string;
+  ogImage?: string;
 }
 
 const {
   title = 'VipSystems | Desarrollo de software, CRM y facturación electrónica en Guayaquil',
   description = 'Desarrollo a medida, implementación e integración de CRM, facturación y firma electrónica, y AgenteVip: atención al cliente por WhatsApp conectada a tus sistemas. Guayaquil, Ecuador.',
   noindex = false,
+  canonical: canonicalProp,
+  ogImage: ogImageProp,
 } = Astro.props;
 
-const canonical = 'https://vipsystems.site/';
-const ogImage = 'https://vipsystems.site/og-vipsystems.png';
+// Astro static output: cada página genera dist/<ruta>/index.html → Cloudflare la sirve con barra final.
+// Normalizamos añadiendo barra final si no la tiene (excepto la raíz que ya la tiene).
+const normalizedPath = Astro.url.pathname.replace(/([^/])$/, '$1/');
+const canonical = canonicalProp ?? new URL(normalizedPath, Astro.site).href;
+const ogImage = ogImageProp ?? 'https://vipsystems.site/og-vipsystems.png';
 
 const facebookUrl = site.social.find((s) => s.label === 'Facebook')?.url ?? '';
 
@@ -26,7 +33,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
   name: site.name,
-  url: canonical,
+  url: 'https://vipsystems.site/',
   logo: 'https://vipsystems.site/brand/png/vipsystems-horizontal-fondo-oscuro-2400.png',
   telephone: '+593960510695',
   email: site.email,
@@ -48,13 +55,13 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     <meta name="theme-color" content="#1f2331" />
     {noindex && <meta name="robots" content="noindex" />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="es_EC" />

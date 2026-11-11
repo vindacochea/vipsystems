@@ -35,7 +35,7 @@ const tiles = [
     <p class="alkilavip-badge">
       <span class="badge">Disponible</span>
     </p>
-    <h3 class="alkilavip-titulo">AlkilaVip</h3>
+    <h3 class="alkilavip-titulo">AlkilaVip <span class="alkilavip-titulo-desc">alquiler de mesas, sillas y enseres para eventos</span></h3>
     <p class="alkilavip-lema">Tu negocio de alquiler de enseres, ordenado.</p>
     <p class="alkilavip-desc">
       Para empresas que alquilan sillas, mesas, carpas, menaje y otros enseres para eventos.
@@ -122,6 +122,15 @@ const tiles = [
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.05;
+  }
+
+  .alkilavip-titulo-desc {
+    display: block;
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--text-muted);
+    margin-top: 4px;
   }
 
   .alkilavip-lema {
