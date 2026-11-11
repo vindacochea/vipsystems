@@ -83,6 +83,7 @@ Teléfonos, URLs de `wa.me` y correo **solo** en `src/data/site.ts`; los compone
 - Commits pequeños y descriptivos en español (`feat: hero y chat de AgenteVip`).
 - Antes de terminar cada tarea: `npm run build` sin errores ni warnings nuevos.
 - No agregar dependencias fuera de `astro` y `@fontsource/*` sin preguntar.
+- **Al agregar una página nueva:** sumarla a `public/sitemap.xml` con su `<lastmod>`, y actualizar `<lastmod>` de la portada (y de la página) cuando cambie el contenido.
 - Si algo del diseño o del contenido es ambiguo, preguntar antes de inventar.
 - **Al terminar cada tarea, entregar este resumen:**
 ```
