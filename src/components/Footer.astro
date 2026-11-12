@@ -43,6 +43,14 @@ const year = new Date().getFullYear();
           <span>{link.label}</span>
         </a>
       ))}
+      <a
+        href={site.googleReviews}
+        rel="noopener"
+        target="_blank"
+        class="footer-link"
+      >
+        <span>Déjanos una reseña en Google</span>
+      </a>
     </nav>
   </div>
 </footer>
@@ -87,7 +95,8 @@ const year = new Date().getFullYear();
 
   .footer-links {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 12px 20px;
   }
 
   .footer-link {

@@ -37,6 +37,8 @@ export const site = {
     { label: 'WhatsApp', url: waLink(WA_COMERCIAL, mensajesWa.general) },
     { label: 'Facebook', url: 'https://www.facebook.com/admin.vipsystem' },
   ],
+  googleProfile: 'https://share.google/ePH8VtPDg3qY7aFwH',
+  googleReviews: 'https://g.page/r/CVzyidu0SsGqEBM/review',
   clientes: [
     'CELCO',
     'GreenfieldCRM',
