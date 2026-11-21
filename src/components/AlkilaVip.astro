@@ -32,9 +32,12 @@ const tiles = [
 
 <article id="alkilavip" class="alkilavip">
   <div class="alkilavip-text">
-    <p class="alkilavip-badge">
+    <div class="alkilavip-cabecera">
+      <span class="producto-icono">
+        <img src="/brand/alkilavip/alkilavip-isotipo-fondo-oscuro.svg" alt="" width="64" height="64" />
+      </span>
       <span class="badge">Disponible</span>
-    </p>
+    </div>
     <h3 class="alkilavip-titulo">AlkilaVip <span class="alkilavip-titulo-desc">alquiler de mesas, sillas y enseres para eventos</span></h3>
     <p class="alkilavip-lema">Tu negocio de alquiler de enseres, ordenado.</p>
     <p class="alkilavip-desc">
@@ -103,8 +106,27 @@ const tiles = [
     min-width: 0;
   }
 
-  .alkilavip-badge {
-    margin: 0 0 16px;
+  .alkilavip-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 20px;
+  }
+
+  .producto-icono {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-card);
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    padding: 2px;
+  }
+
+  .producto-icono img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .badge {
