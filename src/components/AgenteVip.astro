@@ -5,9 +5,12 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
 
 <article id="agentevip" class="agentevip">
   <div class="agentevip-text">
-    <p class="agentevip-badge">
+    <div class="agentevip-cabecera">
+      <span class="producto-icono">
+        <img src="/brand/agentevip/agentevip-isotipo-fondo-oscuro.svg" alt="" width="64" height="64" />
+      </span>
       <span class="badge">Demo disponible</span>
-    </p>
+    </div>
     <h3 class="agentevip-titulo">AgenteVip <span class="agentevip-titulo-desc">atención al cliente por WhatsApp</span></h3>
     <p class="agentevip-lema">Tu call center en WhatsApp, conectado a tus sistemas.</p>
     <p class="agentevip-desc">
@@ -64,8 +67,26 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
     min-width: 0;
   }
 
-  .agentevip-badge {
-    margin: 0 0 16px;
+  .agentevip-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 20px;
+  }
+
+  .producto-icono {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-card);
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .producto-icono img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .badge {
