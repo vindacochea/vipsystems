@@ -1,0 +1,530 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import AlkilaVipTiles from '../components/AlkilaVipTiles.astro';
+import { site, waLink, mensajesWa } from '../data/site.ts';
+
+const waDemo = waLink(site.whatsapp.comercial.waId, mensajesWa.demoAlkilaVip);
+
+const ciclo = ['Proforma', 'Despacho', 'Devolución', 'Cierre'];
+
+const grupos = [
+  {
+    titulo: 'Antes del evento',
+    funciones: [
+      {
+        nombre: 'Proformas',
+        texto: 'Arma cotizaciones con ítems, descuentos, envío e IVA. Envíalas en PDF por WhatsApp y, cuando el cliente confirma, conviértelas en orden de trabajo.',
+      },
+      {
+        nombre: 'Órdenes de trabajo',
+        texto: 'Cada alquiler con sus fechas de entrega y devolución, desde que se crea hasta que se cierra. La orden sale en PDF y sirve como contrato.',
+      },
+      {
+        nombre: 'Inventario en tiempo real',
+        texto: 'Stock físico y disponible por bodega. Lo reservado se separa de lo libre, y si un producto no alcanza, el sistema genera una solicitud de conteo.',
+      },
+    ],
+  },
+  {
+    titulo: 'Entrega y devolución',
+    funciones: [
+      {
+        nombre: 'Despachos',
+        texto: 'Ticket de despacho en PDF para preparar cada pedido y un listado de lo que está listo para salir.',
+      },
+      {
+        nombre: 'Devoluciones con faltantes',
+        texto: 'Si regresan menos unidades de las que salieron, la línea queda marcada como faltante y el stock se ajusta. Lo que no vuelve se da de baja.',
+      },
+      {
+        nombre: 'Limpieza y reparación',
+        texto: 'Registra lo que sale a lavandería o a reparación, con fecha estimada de retorno, y vuelve al stock cuando regresa.',
+      },
+    ],
+  },
+  {
+    titulo: 'Cobros',
+    funciones: [
+      {
+        nombre: 'Anticipos y garantías',
+        texto: 'Los pagos quedan ligados a cada orden, y una orden no se cierra con pagos pendientes. Reporte de anticipos y garantías por cobrar.',
+      },
+      {
+        nombre: 'Daños y faltantes',
+        texto: 'Del depósito de garantía se descuentan los daños o faltantes, y queda registrado cuánto se devolvió al cliente.',
+      },
+      {
+        nombre: 'Caja diaria',
+        texto: 'Apertura y cierre de caja por usuario, con los anticipos, las garantías cobradas y las garantías devueltas del turno.',
+      },
+    ],
+  },
+  {
+    titulo: 'Control',
+    funciones: [
+      {
+        nombre: 'Agenda del día',
+        texto: 'Qué hay que despachar hoy, qué está por regresar, qué órdenes están vencidas y qué conteos están pendientes.',
+      },
+      {
+        nombre: 'Kardex',
+        texto: 'Cada movimiento queda registrado: reserva, despacho, devolución, ajuste o baja. Consultas por producto, bodega y rango de fechas.',
+      },
+      {
+        nombre: 'Bodegas y usuarios',
+        texto: 'Varias bodegas y usuarios con permisos según lo que maneja cada uno.',
+      },
+    ],
+  },
+];
+
+const pasos = [
+  {
+    titulo: 'Te lo mostramos',
+    texto: 'Escríbenos por WhatsApp y agendamos una demostración del sistema.',
+  },
+  {
+    titulo: 'Lo configuramos con tu negocio',
+    texto: 'Cargamos tus productos, bodegas, usuarios y el inventario inicial.',
+  },
+  {
+    titulo: 'Empiezas a trabajar',
+    texto: 'Te acompañamos en los primeros días y seguimos dando soporte después.',
+  },
+];
+---
+
+<Base
+  title="AlkilaVip | Sistema para empresas de alquiler de enseres para eventos"
+  description="Proformas, inventario, despachos, devoluciones, garantías y caja en un solo sistema web para empresas que alquilan sillas, mesas, carpas, mantelería y menaje. Guayaquil, Ecuador."
+  ogImage="https://vipsystems.site/og-alkilavip.png"
+  ogImageAlt="AlkilaVip — Sistema para empresas de alquiler de enseres para eventos."
+>
+  <main id="contenido">
+    <section class="av-hero">
+      <div class="av-hero-inner">
+        <div class="av-hero-text">
+          <img
+            src="/brand/alkilavip/alkilavip-horizontal-fondo-oscuro.svg"
+            alt="AlkilaVip"
+            width="211"
+            height="45"
+            class="av-logo"
+          />
+          <h1 class="av-titulo">Sistema para empresas de alquiler de enseres</h1>
+          <p class="av-subtitulo">
+            De la proforma a la devolución: tu inventario, los despachos, las garantías
+            y la caja en un solo sistema.
+          </p>
+          <div class="av-ctas">
+            <Button href={waDemo} variant="primary" rel="noopener" target="_blank">
+              Solicita una demostración
+            </Button>
+            <Button href="#funciones" variant="secondary">Ver funciones</Button>
+          </div>
+          <p class="av-nota">Sistema web: funciona en la computadora y en el celular.</p>
+        </div>
+        <div class="av-hero-visual">
+          <AlkilaVipTiles />
+        </div>
+      </div>
+    </section>
+
+    <section class="av-seccion av-seccion--surface">
+      <div class="av-inner av-para">
+        <div class="av-para-text">
+          <h2>Hecho para negocios de alquiler para eventos</h2>
+          <p class="av-lead">
+            Para empresas que alquilan sillas, mesas, carpas, mantelería, menaje y otros
+            enseres. AlkilaVip ordena lo que pasa entre la cotización y el día en que todo
+            vuelve a la bodega.
+          </p>
+        </div>
+        <ul class="av-problemas">
+          <li>Saber cuánto tienes libre antes de confirmar un pedido.</li>
+          <li>Que lo que sale vuelva completo, y si no vuelve, que quede registrado.</li>
+          <li>Cuadrar la caja con los anticipos y las garantías del día.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="funciones" class="av-seccion">
+      <div class="av-inner">
+        <h2>Todo el ciclo del alquiler en un solo sistema</h2>
+        <ol class="av-ciclo" aria-label="Ciclo de una orden">
+          {ciclo.map((paso, i) => (
+            <li>
+              <span class="av-ciclo-num">{i + 1}</span>
+              {paso}
+            </li>
+          ))}
+        </ol>
+
+        <div class="av-grupos">
+          {grupos.map((g) => (
+            <div class="av-grupo">
+              <h3 class="av-grupo-titulo">{g.titulo}</h3>
+              <div class="av-funciones">
+                {g.funciones.map((f) => (
+                  <div class="av-funcion">
+                    <h4>{f.nombre}</h4>
+                    <p>{f.texto}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="av-seccion av-seccion--surface">
+      <div class="av-inner">
+        <h2>Cómo empezar</h2>
+        <ol class="av-pasos">
+          {pasos.map((p, i) => (
+            <li class="av-paso">
+              <span class="av-paso-num">{i + 1}</span>
+              <h3>{p.titulo}</h3>
+              <p>{p.texto}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="av-seccion">
+      <div class="av-inner">
+        <div class="av-cierre">
+          <div class="av-cierre-text">
+            <h2>¿Quieres verlo funcionando?</h2>
+            <p>Escríbenos por WhatsApp y te mostramos AlkilaVip.</p>
+          </div>
+          <div class="av-cierre-cta">
+            <Button href={waDemo} variant="dark" rel="noopener" target="_blank">
+              Solicita una demostración
+            </Button>
+          </div>
+        </div>
+        <p class="av-volver">
+          AlkilaVip es un producto de VipSystems. <a href="/">Conoce lo que hacemos</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  #funciones {
+    scroll-margin-top: var(--scroll-offset);
+  }
+
+  /* Hero */
+  .av-hero {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .av-hero-inner,
+  .av-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--pad-x);
+  }
+
+  .av-hero-inner {
+    padding-block: clamp(48px, 7vw, 72px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px 72px;
+    align-items: center;
+  }
+
+  .av-hero-text {
+    flex: 1 1 min(100%, 560px);
+    min-width: 0;
+  }
+
+  .av-logo {
+    height: 40px;
+    width: auto;
+    margin-bottom: 32px;
+  }
+
+  .av-titulo {
+    margin: 0;
+  }
+
+  .av-subtitulo {
+    margin: 24px 0 0;
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 540px;
+  }
+
+  .av-ctas {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .av-nota {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .av-hero-visual {
+    flex: 1 1 min(100%, 380px);
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-block);
+    padding: clamp(16px, 3vw, 28px);
+  }
+
+  /* Secciones */
+  .av-seccion {
+    border-top: 1px solid var(--line);
+    padding-block: var(--section-y);
+  }
+
+  .av-hero + .av-seccion {
+    border-top: none;
+  }
+
+  .av-seccion--surface {
+    background: var(--surface);
+  }
+
+  .av-seccion h2 {
+    margin: 0;
+  }
+
+  /* Para quién */
+  .av-para {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 72px;
+    align-items: center;
+  }
+
+  .av-para-text {
+    flex: 1 1 min(100%, 520px);
+    min-width: 0;
+  }
+
+  .av-lead {
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  .av-problemas {
+    flex: 1 1 min(100%, 420px);
+    min-width: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .av-problemas li {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 18px 20px 18px 52px;
+    position: relative;
+    font-weight: 500;
+  }
+
+  .av-problemas li::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 22px;
+    width: 16px;
+    height: 9px;
+    border-left: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    transform: rotate(-45deg);
+  }
+
+  /* Ciclo */
+  .av-ciclo {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .av-ciclo li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px 8px 8px;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-pill);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+  }
+
+  .av-ciclo-num {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* Grupos de funciones */
+  .av-grupos {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .av-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 48px;
+    padding-block: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .av-grupo:last-child {
+    padding-bottom: 0;
+  }
+
+  .av-grupo-titulo {
+    flex: 1 1 min(100%, 220px);
+    max-width: 260px;
+    min-width: 0;
+    margin: 0;
+    color: var(--green);
+  }
+
+  .av-funciones {
+    flex: 999 1 min(100%, 640px);
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .av-funcion {
+    flex: 1 1 min(100%, 240px);
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 24px;
+  }
+
+  .av-funcion h4 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 700;
+  }
+
+  .av-funcion p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  /* Pasos */
+  .av-pasos {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .av-paso {
+    flex: 1 1 min(100%, 280px);
+    min-width: 0;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 28px;
+  }
+
+  .av-paso-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+
+  .av-paso h3 {
+    margin: 0 0 8px;
+  }
+
+  .av-paso p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  /* Cierre (sobre verde: texto oscuro) */
+  .av-cierre {
+    background: var(--green);
+    color: var(--bg);
+    border-radius: var(--radius-block);
+    padding: clamp(28px, 5vw, 56px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 48px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .av-cierre-text {
+    flex: 1 1 min(100%, 480px);
+    min-width: 0;
+  }
+
+  .av-cierre-text p {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .av-volver {
+    margin-top: 28px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  @media (max-width: 600px) {
+    .av-hero-inner,
+    .av-inner {
+      padding-inline: var(--pad-x-mobile);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .av-ctas :global(.btn),
+    .av-cierre-cta,
+    .av-cierre-cta :global(.btn) {
+      width: 100%;
+    }
+
+    .av-funcion,
+    .av-paso {
+      padding: 24px;
+    }
+  }
+</style>
