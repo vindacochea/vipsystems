@@ -10,7 +10,7 @@ export function telVisible(numero: string): string {
 export const mensajesWa = {
   general:          'Hola, vengo de vipsystems.site y quiero información.',
   facturacion:      'Hola, quiero cotizar facturación electrónica.',
-  pruebaAgenteVip:  'Hola, quiero probar AgenteVip.',
+  pruebaAgenteVip:  'demo', // palabra que activa el demo del bot
   empresaAgenteVip: 'Hola, quiero AgenteVip para mi empresa.',
   demoAlkilaVip:    'Hola, quiero una demostración de AlkilaVip.',
 };

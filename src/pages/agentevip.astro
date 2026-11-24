@@ -1,0 +1,589 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import ChatDemo from '../components/ChatDemo.astro';
+import type { Mensaje } from '../components/ChatDemo.astro';
+import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
+
+const waPrueba = waLink(site.whatsapp.agentevip.waId, mensajesWa.pruebaAgenteVip);
+const waEmpresa = waLink(site.whatsapp.comercial.waId, mensajesWa.empresaAgenteVip);
+
+// Conversaciones del demo público, transcritas de capturas del 2026-11-23
+// (se omiten emoji y la parte de precios).
+const chatHero: Mensaje[] = [
+  { tipo: 'bot',     texto: 'Hola, bienvenido a VipSystems. ¿Qué necesitas?', botones: ['Productos', 'Precios', 'Hablar con alguien'] },
+  { tipo: 'cliente', texto: 'Productos' },
+  { tipo: 'bot',     texto: '¿Cuántas personas atienden hoy los mensajes de VipSystems?', botones: ['Solo yo', '2 o más'] },
+  { tipo: 'cliente', texto: 'Solo yo' },
+  { tipo: 'bot',     texto: '¿Te armo el precio exacto para VipSystems?', botones: ['Quiero cotizar', 'Tengo una duda'] },
+];
+
+const chatBasica: Mensaje[] = [
+  { tipo: 'bot',     texto: 'Hola, bienvenido a VipSystems. Escribe el número de lo que necesitas:\n1. Ver productos o servicios\n2. Precios y promociones\n3. Hablar con una persona' },
+  { tipo: 'cliente', texto: '1' },
+  { tipo: 'bot',     texto: 'Aquí tu cliente vería tu catálogo: fotos, descripción y precio de lo que ofreces.' },
+];
+
+const chatProfesional: Mensaje[] = [
+  { tipo: 'bot',     texto: 'Hola, bienvenido a VipSystems. ¿Qué necesitas?', botones: ['Productos', 'Precios', 'Hablar con alguien'] },
+  { tipo: 'cliente', texto: 'Productos' },
+];
+
+const funciones = [
+  { nombre: 'Saluda y entiende qué busca', texto: 'Detecta el interés de la persona desde el primer mensaje y la lleva por el camino correcto.' },
+  { nombre: 'Hace las preguntas que necesitas', texto: 'Pide los datos de tu proceso, paso a paso, para calificar a cada prospecto.' },
+  { nombre: 'Pasa a una persona cuando hace falta', texto: 'La conversación llega a un asesor de tu equipo y el bot se retira solo.' },
+  { nombre: 'Junta los mensajes seguidos', texto: 'Si alguien escribe en varias líneas, responde a todo de una vez.' },
+  { nombre: 'Cierra con amabilidad', texto: 'Si la persona deja de responder, despide la conversación con un mensaje cordial.' },
+  { nombre: 'Envía avisos de tus sistemas', texto: 'Tus otros sistemas pueden enviar confirmaciones y avisos por el mismo WhatsApp.' },
+];
+
+const formas = [
+  {
+    nombre: 'Automatización Básica',
+    lema: 'Arranque rápido',
+    puntos: [
+      'Funciona en el número de WhatsApp de tu negocio.',
+      'Menú con opciones numeradas.',
+      'Preguntas guiadas y traspaso a un asesor.',
+    ],
+    chat: chatBasica,
+  },
+  {
+    nombre: 'Automatización Profesional',
+    lema: 'Toca y listo, como una app',
+    puntos: [
+      'Conexión oficial de WhatsApp.',
+      'Botones y listas para elegir con un toque.',
+      'Seguimientos automáticos si la persona no responde.',
+      'Envíos masivos con plantillas aprobadas.',
+    ],
+    chat: chatProfesional,
+  },
+];
+
+const centro = [
+  'Varios asesores atienden desde un solo lugar, con reparto manual o automático.',
+  'Respuestas guardadas, etiquetas, equipos y horario de atención.',
+  'Historial completo de cada cliente.',
+  'Reportes de tiempo de respuesta y de desempeño por asesor y por equipo.',
+  'Los audios, imágenes y documentos que envían tus clientes los ve y responde el asesor desde el panel.',
+];
+
+const seguimiento = [
+  'Tablero por etapas para ver en qué punto está cada prospecto.',
+  'Etiquetas según la opción que elige cada persona.',
+  'Tu equipo arma flujos con botones y automatizaciones desde una pantalla visual, sin programar.',
+  'Seguimiento de cada envío masivo por destinatario.',
+];
+
+const pasos = [
+  { titulo: 'Pruébalo', texto: 'Escribe al demo y mira cómo responde.' },
+  { titulo: 'Definimos tu flujo', texto: 'Las preguntas, los mensajes y el tono, según tu negocio.' },
+  { titulo: 'Lo ponemos en marcha', texto: 'Lo conectamos a tu WhatsApp y te acompañamos en los primeros días.' },
+];
+---
+
+<Base
+  title="AgenteVip | Atención al cliente por WhatsApp para tu negocio"
+  description="AgenteVip responde por WhatsApp a cualquier hora, califica a tus prospectos y pasa la conversación a tu equipo. Con panel para asesores y seguimiento de prospectos. Guayaquil, Ecuador."
+  ogImage="https://vipsystems.site/og-agentevip.png"
+  ogImageAlt="AgenteVip — Atención al cliente por WhatsApp para tu negocio."
+>
+  <main id="contenido">
+    <section class="ag-hero">
+      <div class="ag-hero-inner">
+        <div class="ag-hero-text">
+          <div class="ag-marca">
+            <img
+              src="/brand/agentevip/agentevip-horizontal-fondo-oscuro.svg"
+              alt="AgenteVip"
+              width="223"
+              height="40"
+              class="ag-logo"
+            />
+            <span class="ag-badge">Demo disponible</span>
+          </div>
+          <h1 class="ag-titulo">Atención al cliente por WhatsApp, a cualquier hora</h1>
+          <p class="ag-subtitulo">
+            AgenteVip responde a tus clientes, hace las preguntas que necesitas y pasa la
+            conversación a tu equipo cuando hace falta una persona.
+          </p>
+          <div class="ag-ctas">
+            <Button href={waPrueba} variant="primary" rel="noopener" target="_blank">
+              <span class="btn-prueba-wrap">
+                <span>Pruébalo ahora</span>
+                <span class="btn-prueba-sep" aria-hidden="true"> · </span>
+                <span class="btn-prueba-tel">{telVisible(site.whatsapp.agentevip.number)}</span>
+              </span>
+            </Button>
+            <Button href={waEmpresa} variant="secondary" rel="noopener" target="_blank">
+              Quiero AgenteVip para mi empresa
+            </Button>
+          </div>
+        </div>
+        <div class="ag-hero-chat">
+          <ChatDemo mensajes={chatHero} titulo="Conversación con el demo" />
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-seccion ag-seccion--surface">
+      <div class="ag-inner">
+        <h2>Qué hace en cada conversación</h2>
+        <div class="ag-funciones">
+          {funciones.map((f) => (
+            <div class="ag-funcion">
+              <h3>{f.nombre}</h3>
+              <p>{f.texto}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="formas" class="ag-seccion">
+      <div class="ag-inner">
+        <h2>Dos formas de empezar</h2>
+        <p class="ag-lead">Las dos responden 24/7 y pasan la conversación a tu equipo. Cambia cómo la persona elige.</p>
+        <div class="ag-formas">
+          {formas.map((f) => (
+            <div class="ag-forma">
+              <div class="ag-forma-texto">
+                <h3>{f.nombre}</h3>
+                <p class="ag-forma-lema">{f.lema}</p>
+                <ul class="ag-lista">
+                  {f.puntos.map((p) => <li>{p}</li>)}
+                </ul>
+              </div>
+              <div class="ag-forma-chat">
+                <ChatDemo mensajes={f.chat} titulo={`Así se ve · ${f.nombre}`} encabezado={false} etiqueta={`Ejemplo de ${f.nombre}`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-seccion ag-seccion--surface">
+      <div class="ag-inner ag-paneles">
+        <div class="ag-panel">
+          <p class="ag-panel-tag">Para tu equipo</p>
+          <h2>Centro de Atención</h2>
+          <p class="ag-panel-lema">Un panel para todo tu equipo.</p>
+          <ul class="ag-lista">
+            {centro.map((p) => <li>{p}</li>)}
+          </ul>
+        </div>
+        <div class="ag-panel">
+          <p class="ag-panel-tag">Con Automatización Profesional</p>
+          <h2>Seguimiento de prospectos</h2>
+          <p class="ag-panel-lema">Que ningún interesado se quede sin respuesta.</p>
+          <ul class="ag-lista">
+            {seguimiento.map((p) => <li>{p}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-seccion">
+      <div class="ag-inner">
+        <div class="ag-complemento">
+          <p class="ag-panel-tag">Complemento</p>
+          <h2>Conexión con tu sistema de clientes</h2>
+          <p>Al terminar la conversación, el prospecto queda registrado en el sistema que ya usas, sin digitarlo de nuevo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-seccion ag-seccion--surface">
+      <div class="ag-inner">
+        <h2>Cómo empezar</h2>
+        <ol class="ag-pasos">
+          {pasos.map((p, i) => (
+            <li class="ag-paso">
+              <span class="ag-paso-num">{i + 1}</span>
+              <h3>{p.titulo}</h3>
+              <p>{p.texto}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="ag-seccion">
+      <div class="ag-inner">
+        <div class="ag-cierre">
+          <div class="ag-cierre-text">
+            <h2>¿Quieres verlo en tu negocio?</h2>
+            <p>Escríbenos y te contamos cómo funcionaría con tus clientes.</p>
+          </div>
+          <div class="ag-cierre-ctas">
+            <Button href={waEmpresa} variant="dark" rel="noopener" target="_blank">
+              Quiero AgenteVip para mi empresa
+            </Button>
+            <Button href={waPrueba} variant="outline-dark" rel="noopener" target="_blank">
+              Pruébalo ahora
+            </Button>
+          </div>
+        </div>
+        <p class="ag-volver">
+          AgenteVip es un producto de VipSystems. <a href="/">Conoce lo que hacemos</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</Base>
+
+<style>
+  /* Hero */
+  .ag-hero {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ag-hero-inner,
+  .ag-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--pad-x);
+  }
+
+  .ag-hero-inner {
+    padding-block: clamp(48px, 7vw, 72px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px 72px;
+    align-items: center;
+  }
+
+  .ag-hero-text {
+    flex: 1 1 min(100%, 560px);
+    min-width: 0;
+  }
+
+  .ag-marca {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    margin-bottom: 32px;
+  }
+
+  .ag-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .ag-badge {
+    border: 1px solid var(--line-soft);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+  }
+
+  .ag-titulo {
+    margin: 0;
+  }
+
+  .ag-subtitulo {
+    margin: 24px 0 0;
+    font-size: 20px;
+    color: var(--text-muted);
+    max-width: 540px;
+  }
+
+  .ag-ctas {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn-prueba-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .ag-hero-chat {
+    flex: 1 1 min(100%, 380px);
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Secciones */
+  .ag-seccion {
+    border-top: 1px solid var(--line);
+    padding-block: var(--section-y);
+  }
+
+  .ag-hero + .ag-seccion {
+    border-top: none;
+  }
+
+  .ag-seccion--surface {
+    background: var(--surface);
+  }
+
+  .ag-seccion h2 {
+    margin: 0;
+  }
+
+  .ag-lead {
+    margin-top: 16px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  /* Funciones */
+  .ag-funciones {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ag-funcion {
+    flex: 1 1 min(100%, 340px);
+    min-width: 0;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 24px;
+  }
+
+  .ag-funcion h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+
+  .ag-funcion p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-muted);
+  }
+
+  /* Dos formas */
+  .ag-formas {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .ag-forma {
+    flex: 1 1 min(100%, 520px);
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-block);
+    padding: clamp(24px, 3.5vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .ag-forma h3 {
+    margin: 0;
+  }
+
+  .ag-forma-lema {
+    margin: 6px 0 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--green);
+  }
+
+  .ag-forma-chat {
+    margin-top: auto;
+  }
+
+  .ag-forma-chat :global(.chat-panel) {
+    max-width: none;
+    background: var(--bg);
+  }
+
+  /* Listas con check */
+  .ag-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ag-lista li {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .ag-lista li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 7px;
+    width: 14px;
+    height: 8px;
+    border-left: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    transform: rotate(-45deg);
+  }
+
+  /* Paneles */
+  .ag-paneles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 72px;
+  }
+
+  .ag-panel {
+    flex: 1 1 min(100%, 440px);
+    min-width: 0;
+  }
+
+  .ag-panel-tag {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .ag-panel-lema {
+    margin: 10px 0 24px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(18px, 2vw, 22px);
+  }
+
+  .ag-panel .ag-lista li {
+    color: var(--text-muted);
+  }
+
+  /* Complemento */
+  .ag-complemento {
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-block);
+    padding: clamp(24px, 4vw, 40px);
+    max-width: 820px;
+  }
+
+  .ag-complemento h2 {
+    font-size: clamp(26px, 3vw, 34px);
+  }
+
+  .ag-complemento p:last-child {
+    margin-top: 14px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  /* Pasos */
+  .ag-pasos {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ag-paso {
+    flex: 1 1 min(100%, 280px);
+    min-width: 0;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    padding: 28px;
+  }
+
+  .ag-paso-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+
+  .ag-paso h3 {
+    margin: 0 0 8px;
+  }
+
+  .ag-paso p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  /* Cierre (sobre verde: texto oscuro) */
+  .ag-cierre {
+    background: var(--green);
+    color: var(--bg);
+    border-radius: var(--radius-block);
+    padding: clamp(28px, 5vw, 56px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 48px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ag-cierre-text {
+    flex: 1 1 min(100%, 440px);
+    min-width: 0;
+  }
+
+  .ag-cierre-text p {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .ag-cierre-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ag-volver {
+    margin-top: 28px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  @media (max-width: 600px) {
+    .ag-hero-inner,
+    .ag-inner {
+      padding-inline: var(--pad-x-mobile);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ag-ctas,
+    .ag-cierre-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .ag-ctas :global(.btn),
+    .ag-cierre-ctas :global(.btn) {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
+    }
+
+    .btn-prueba-wrap {
+      flex-direction: column;
+      gap: 2px;
+      white-space: normal;
+    }
+
+    .btn-prueba-sep {
+      display: none;
+    }
+  }
+</style>

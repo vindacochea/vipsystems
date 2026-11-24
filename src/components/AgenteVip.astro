@@ -12,11 +12,11 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
       <span class="badge">Demo disponible</span>
     </div>
     <h3 class="agentevip-titulo">AgenteVip <span class="agentevip-titulo-desc">atención al cliente por WhatsApp</span></h3>
-    <p class="agentevip-lema">Tu call center en WhatsApp, conectado a tus sistemas.</p>
+    <p class="agentevip-lema">Tu atención por WhatsApp, a cualquier hora y con tu equipo al tanto.</p>
     <p class="agentevip-desc">
-      AgenteVip atiende a tus clientes por WhatsApp a cualquier hora: responde consultas,
-      registra casos y busca información en tu CRM u otros sistemas. Cuando hace falta
-      una persona, pasa la conversación a tu equipo.
+      AgenteVip atiende a tus clientes por WhatsApp a cualquier hora: saluda, hace las
+      preguntas que necesitas para calificar a cada prospecto y, cuando hace falta una
+      persona, pasa la conversación a tu equipo.
     </p>
     <div class="agentevip-ctas">
       <Button
@@ -40,13 +40,14 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
         Quiero AgenteVip para mi empresa
       </Button>
     </div>
+    <a href="/agentevip/" class="agentevip-mas">Conoce cómo funciona</a>
   </div>
 
   <ul class="agentevip-puntos">
     <li>Atención 24/7</li>
-    <li>Integración con CRM y sistemas externos</li>
-    <li>Traspaso a un agente humano</li>
-    <li>Historial de cada conversación</li>
+    <li>Preguntas guiadas para calificar prospectos</li>
+    <li>Traspaso a un asesor</li>
+    <li>Un panel para todo tu equipo</li>
   </ul>
 </article>
 
@@ -138,6 +139,19 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
     margin-top: 32px;
   }
 
+  .agentevip-mas {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--bg);
+    font-weight: 600;
+    text-underline-offset: 4px;
+  }
+
+  .agentevip-mas:hover {
+    color: var(--bg);
+    text-decoration-thickness: 2px;
+  }
+
   .agentevip-puntos {
     flex: 1 1 min(100%, 300px);
     min-width: 0;
@@ -160,6 +174,7 @@ import { site, waLink, mensajesWa, telVisible } from '../data/site.ts';
   .btn-prueba-wrap {
     display: flex;
     align-items: center;
+    gap: 6px;
     white-space: nowrap;
   }
 
