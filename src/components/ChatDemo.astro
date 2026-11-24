@@ -87,7 +87,7 @@ const {
 <style>
   .chat-panel {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-block);
@@ -148,7 +148,7 @@ const {
     padding: 12px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     font-size: 15px;
     line-height: 1.45;
   }
@@ -174,7 +174,7 @@ const {
   }
 
   .bubble {
-    max-width: 82%;
+    max-width: 88%;
     padding: 10px 14px;
     word-break: break-word;
   }
@@ -195,25 +195,24 @@ const {
     border-radius: 16px 16px 16px 4px;
   }
 
-  .bubble--bot:has(.botones) {
-    padding-bottom: 0;
-    min-width: min(100%, 220px);
-  }
-
+  /* Botones del bot en línea (compactos); se envuelven si no caben. */
   .botones {
     display: flex;
-    flex-direction: column;
-    margin: 10px -14px 0;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
   }
 
   .boton {
-    display: block;
-    text-align: center;
-    padding: 9px 14px;
-    border-top: 1px solid var(--line-strong);
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--green);
+    border-radius: var(--radius-pill);
     color: var(--green);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: nowrap;
   }
 
   .evento {
