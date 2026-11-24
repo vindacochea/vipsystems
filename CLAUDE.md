@@ -17,13 +17,15 @@ src/
   components/               un componente por sección y piezas reutilizables
     Header.astro  Footer.astro  Button.astro  Section.astro
     Hero.astro  ChatDemo.astro  Servicios.astro  Productos.astro
-    AgenteVip.astro  AlkilaVip.astro  AlkilaVipTiles.astro  Experiencia.astro  Tecnologias.astro  Contacto.astro
+    AgenteVip.astro  AlkilaVip.astro  Experiencia.astro  Tecnologias.astro  Contacto.astro
     AlkilaVipTiles.astro    tiles compartidos entre la portada y /alkilavip/
+    ChatDemo.astro          chat del demo (props: titulo, encabezado, etiqueta; mensajes del bot con `botones`)
   data/site.ts              teléfonos, enlaces de WhatsApp, correo, redes, lista de clientes, tecnologías
   styles/tokens.css         variables de diseño (colores, tipografía, espacios, radios)
   styles/global.css         reset mínimo y estilos base
   pages/index.astro         la landing
   pages/alkilavip.astro     página de producto AlkilaVip
+  pages/agentevip.astro     página de producto AgenteVip
 public/
   brand/                    kit del logo (svg/, png/) — NO modificar los archivos
   favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png
@@ -70,6 +72,7 @@ Teléfonos, URLs de `wa.me` y correo **solo** en `src/data/site.ts`; los compone
 - Implementaciones con GreenfieldCRM en pasado. Entidades públicas con el nombre que tenían cuando se hizo el trabajo.
 - Facturación electrónica siempre como "by Ebos".
 - Anclas fijas: `#servicios`, `#productos`, `#agentevip`, `#alkilavip`, `#experiencia`, `#contacto` (las usa la publicidad; no cambiarlas).
+- AgenteVip: publicar solo funciones que existen hoy (no consultas en vivo a otros sistemas, no IA, no agendamiento ni envío de documentos). Nombres comerciales: Automatización Básica, Automatización Profesional, Centro de Atención, Seguimiento de prospectos, Conexión con tu sistema de clientes. No nombrar herramientas, proveedores ni clientes del bot. Textos en `vipsystems-contenido-agentevip.md` (proyecto en Claude Pro).
 - El menú del Header enlaza a `/#ancla` (no `#ancla`) para que funcione desde páginas internas.
 - Assets pendientes (logo de CELCO, captura de AlkilaVip, captura real del demo de AgenteVip): dejar un placeholder marcado con `TODO(asset)` y no inventar el contenido.
 

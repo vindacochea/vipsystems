@@ -4,25 +4,35 @@ export type MensajeTipo = 'cliente' | 'bot' | 'evento' | 'aviso';
 export interface Mensaje {
   tipo: MensajeTipo;
   texto: string;
+  /** Botones que muestra el bot debajo del mensaje (Automatización Profesional). */
+  botones?: string[];
 }
 
 interface Props {
   mensajes: Mensaje[];
   titulo?: string;
+  /** Muestra la cabecera con avatar y estado (false para chats cortos dentro de tarjetas). */
+  encabezado?: boolean;
+  etiqueta?: string;
 }
 
-const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
+const {
+  mensajes,
+  titulo = 'Ejemplo de conversación',
+  encabezado = true,
+  etiqueta = 'Demo de AgenteVip',
+} = Astro.props;
 ---
 
-<!-- TODO(asset): reemplazar esta conversación de ejemplo por captura real del demo de AgenteVip -->
-<figure class="chat-panel" aria-label="Demo de AgenteVip">
+<figure class="chat-panel" aria-label={etiqueta}>
+  {encabezado && (
   <header class="chat-header">
     <div class="chat-avatar" aria-hidden="true">
       <img
-        src="/brand/svg/vipsystems-isotipo-fondo-oscuro.svg"
+        src="/brand/agentevip/agentevip-isotipo-fondo-oscuro.svg"
         alt=""
-        width="24"
-        height="24"
+        width="30"
+        height="30"
       />
     </div>
     <div class="chat-identity">
@@ -30,6 +40,7 @@ const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
       <p class="chat-status">en línea · 24/7</p>
     </div>
   </header>
+  )}
 
   <figcaption class="chat-caption">{titulo}</figcaption>
 
@@ -45,7 +56,16 @@ const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
         {m.tipo === 'bot' && (
           <>
             <span class="sr-only">AgenteVip:</span>
-            <span class="bubble bubble--bot">{m.texto}</span>
+            <span class="bubble bubble--bot">
+              <span class="bubble-texto">{m.texto}</span>
+              {m.botones && (
+                <span class="botones" role="list" aria-label="Botones">
+                  {m.botones.map((b) => (
+                    <span class="boton" role="listitem">{b}</span>
+                  ))}
+                </span>
+              )}
+            </span>
           </>
         )}
         {m.tipo === 'evento' && (
@@ -159,6 +179,10 @@ const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
     word-break: break-word;
   }
 
+  .bubble-texto {
+    white-space: pre-line;
+  }
+
   .bubble--cliente {
     background: var(--green);
     color: var(--bg);
@@ -169,6 +193,27 @@ const { mensajes, titulo = 'Ejemplo de conversación' } = Astro.props;
     background: var(--line);
     color: var(--text);
     border-radius: 16px 16px 16px 4px;
+  }
+
+  .bubble--bot:has(.botones) {
+    padding-bottom: 0;
+    min-width: min(100%, 220px);
+  }
+
+  .botones {
+    display: flex;
+    flex-direction: column;
+    margin: 10px -14px 0;
+  }
+
+  .boton {
+    display: block;
+    text-align: center;
+    padding: 9px 14px;
+    border-top: 1px solid var(--line-strong);
+    color: var(--green);
+    font-weight: 600;
+    font-size: 14px;
   }
 
   .evento {

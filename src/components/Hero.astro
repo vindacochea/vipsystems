@@ -4,14 +4,16 @@ import ChatDemo from './ChatDemo.astro';
 import { site, waLink, mensajesWa } from '../data/site.ts';
 import type { Mensaje } from './ChatDemo.astro';
 
-// TODO(asset): reemplazar esta conversación por captura real del demo de AgenteVip
+// Conversación del demo público de AgenteVip (Automatización Profesional, con botones),
+// transcrita de capturas del 2026-11-23; se omiten emoji y la parte de precios.
 const conversacion: Mensaje[] = [
-  { tipo: 'cliente', texto: 'Hola, ¿en qué estado está mi caso de soporte?' },
-  { tipo: 'bot',     texto: 'Lo encontré en el CRM. Tu caso está asignado a un técnico y se atiende hoy en la tarde.' },
-  { tipo: 'evento',  texto: 'Consulta en CRM' },
-  { tipo: 'cliente', texto: '¿Puedo hablar con alguien?' },
-  { tipo: 'bot',     texto: 'Claro, te paso con una persona de nuestro equipo.' },
-  { tipo: 'aviso',   texto: 'Conversación transferida a un agente' },
+  { tipo: 'bot',     texto: 'Hola, bienvenido a VipSystems. ¿Qué necesitas?', botones: ['Productos', 'Precios', 'Hablar con alguien'] },
+  { tipo: 'cliente', texto: 'Productos' },
+  { tipo: 'bot',     texto: '¿Cuántas personas atienden hoy los mensajes de VipSystems?', botones: ['Solo yo', '2 o más'] },
+  { tipo: 'cliente', texto: 'Solo yo' },
+  { tipo: 'bot',     texto: '¿Te armo el precio exacto para VipSystems?', botones: ['Quiero cotizar', 'Tengo una duda'] },
+  { tipo: 'cliente', texto: 'Tengo una duda' },
+  { tipo: 'bot',     texto: 'Cuéntame, te leo.' },
 ];
 ---
 
@@ -35,7 +37,7 @@ const conversacion: Mensaje[] = [
     </div>
 
     <div class="hero-chat">
-      <ChatDemo mensajes={conversacion} />
+      <ChatDemo mensajes={conversacion} titulo="Conversación con el demo" />
     </div>
   </div>
 </section>
