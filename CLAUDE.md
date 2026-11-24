@@ -17,11 +17,13 @@ src/
   components/               un componente por sección y piezas reutilizables
     Header.astro  Footer.astro  Button.astro  Section.astro
     Hero.astro  ChatDemo.astro  Servicios.astro  Productos.astro
-    AgenteVip.astro  AlkilaVip.astro  Experiencia.astro  Tecnologias.astro  Contacto.astro
+    AgenteVip.astro  AlkilaVip.astro  AlkilaVipTiles.astro  Experiencia.astro  Tecnologias.astro  Contacto.astro
+    AlkilaVipTiles.astro    tiles compartidos entre la portada y /alkilavip/
   data/site.ts              teléfonos, enlaces de WhatsApp, correo, redes, lista de clientes, tecnologías
   styles/tokens.css         variables de diseño (colores, tipografía, espacios, radios)
   styles/global.css         reset mínimo y estilos base
   pages/index.astro         la landing
+  pages/alkilavip.astro     página de producto AlkilaVip
 public/
   brand/                    kit del logo (svg/, png/) — NO modificar los archivos
   favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png
@@ -68,12 +70,14 @@ Teléfonos, URLs de `wa.me` y correo **solo** en `src/data/site.ts`; los compone
 - Implementaciones con GreenfieldCRM en pasado. Entidades públicas con el nombre que tenían cuando se hizo el trabajo.
 - Facturación electrónica siempre como "by Ebos".
 - Anclas fijas: `#servicios`, `#productos`, `#agentevip`, `#alkilavip`, `#experiencia`, `#contacto` (las usa la publicidad; no cambiarlas).
+- El menú del Header enlaza a `/#ancla` (no `#ancla`) para que funcione desde páginas internas.
 - Assets pendientes (logo de CELCO, captura de AlkilaVip, captura real del demo de AgenteVip): dejar un placeholder marcado con `TODO(asset)` y no inventar el contenido.
 
 ## SEO y accesibilidad
 - Title y meta description del documento de contenido; `lang="es"`, Open Graph básico, canonical `https://vipsystems.site/`.
 - Un solo `h1`; jerarquía de encabezados correcta; enlaces con texto descriptivo; `alt` en imágenes con contenido.
 - Enlaces externos de WhatsApp con `rel="noopener"`.
+- `Base.astro` acepta `ogImageAlt`; cada página de producto usa su imagen OG propia (`public/og-<producto>.png`, 1200×630).
 
 ## Forma de trabajo
 - `main` es producción: cada push a `main` despliega vipsystems.site (Workers Builds → `wrangler deploy`).

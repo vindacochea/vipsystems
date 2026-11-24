@@ -11,6 +11,7 @@ interface Props {
   noindex?: boolean;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   noindex = false,
   canonical: canonicalProp,
   ogImage: ogImageProp,
+  ogImageAlt = 'VipSystems — Tu CRM, tu facturación y tu atención al cliente, conectados.',
 } = Astro.props;
 
 // Astro static output: cada página genera dist/<ruta>/index.html → Cloudflare la sirve con barra final.
@@ -70,7 +72,7 @@ const jsonLd = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="VipSystems — Tu CRM, tu facturación y tu atención al cliente, conectados." />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
